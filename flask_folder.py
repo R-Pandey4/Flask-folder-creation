@@ -1,9 +1,18 @@
 import sys
+import os
 
 # Checking for Exception in case no Arguments are provided 
 try:
     project_name = sys.argv[1]
-except:
+except IndexError:
     project_name = input("Enter the name of the Flask Project: ")
 
-print(f"\n {project_name}")
+# Now creating Main Project folder
+
+try:
+    # Create target Directory
+    os.mkdir(project_name)
+    print("Directory " , project_name ,  " Created ") 
+except FileExistsError:
+    print("Directory " , project_name ,  " already exists")
+
